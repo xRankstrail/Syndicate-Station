@@ -99,4 +99,9 @@ public sealed class GrabThrownSystem : EntitySystem
 
         _layingDown.TryLieDown(uid, behavior:DropHeldItemsBehavior.AlwaysDrop);
     }
+
+    public void Throw(EntityUid target, Vector2 dir)
+    {
+        throw new NotImplementedException();
+    }
 }
