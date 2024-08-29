@@ -25,6 +25,7 @@ using Content.Shared.Popups;
 using Content.Shared.Pulling.Events;
 using Content.Shared.Speech;
 using Content.Shared.Throwing;
+using Content.Shared.MartialArts;
 using Content.Shared.Verbs;
 using Robust.Shared.Audio;
 using Robust.Shared.Audio.Systems;
@@ -832,6 +833,9 @@ public sealed class PullingSystem : EntitySystem
         _popup.PopupEntity(Loc.GetString($"popup-grab-{puller.Comp.GrabStage.ToString().ToLower()}-others", ("target", Identity.Entity(pullable, EntityManager)), ("puller", Identity.Entity(puller, EntityManager))), pullable, filter, true, popupType);
 
         _audio.PlayPvs(new SoundPathSpecifier("/Audio/Effects/thudswoosh.ogg"), pullable);
+
+        var comboEv = new ComboAttackPerformedEvent(puller.Owner, pullable.Owner, puller.Owner, ComboAttackType.Grab);
+        RaiseLocalEvent(puller.Owner, comboEv);
 
         Dirty(pullable);
         Dirty(puller);
