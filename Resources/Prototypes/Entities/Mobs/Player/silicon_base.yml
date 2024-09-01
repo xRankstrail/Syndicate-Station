@@ -239,6 +239,7 @@
     - type: Speech
       speechSounds: IPC
     - type: Vocal
+      wilhelm: "/Audio/Voice/IPC/wilhelm.ogg"
       sounds:
         Male: UnisexIPC
         Female: UnisexIPC
