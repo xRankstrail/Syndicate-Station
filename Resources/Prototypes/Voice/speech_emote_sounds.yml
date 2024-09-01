@@ -434,10 +434,6 @@
       path: /Audio/Voice/IPC/syndieborg_laugh.ogg
       params:
         variation: 0.125
-    Honk:
-      collection: BikeHorn
-      params:
-        variation: 0.125
     Chitter:
       path: /Audio/Voice/Talk/pai.ogg
       params:
