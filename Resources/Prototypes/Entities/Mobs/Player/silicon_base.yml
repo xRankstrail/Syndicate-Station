@@ -63,17 +63,6 @@
         types:
           Heat: 3 #per second, scales with temperature & other constants
       atmosTemperatureTransferEfficiency: 0.05
-    - type: Repairable
-      fuelcost: 5 # cause most of the fuel is used how long its turned on for
-      doAfterDelay: 3
-      damage:
-        types:
-          Blunt: -25 # you can't heal group damage. it doesn't work. wh y.
-          Slash: -25
-          Piercing: -25
-          Cold: -60 # you're warming them up...
-          Heat: -5 # another 2 minutes of downtime due to slight overheating
-          Asphyxiation: -200 # TODO FIX DEATHGASPS
     - type: Deathgasp
       prototype: SiliconDeathgasp
       needsCritical: false
@@ -244,13 +233,6 @@
         Male: UnisexIPC
         Female: UnisexIPC
         Unsexed: UnisexIPC
-    - type: LanguageKnowledge
-      speaks:
-      - GalacticCommon
-      - RobotTalk
-      understands:
-      - GalacticCommon
-      - RobotTalk
     - type: MeleeWeapon
       hidden: true
       soundHit:
