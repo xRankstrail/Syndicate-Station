@@ -23,7 +23,7 @@ Every procedure starts with an incision and ends with cauterization, if you scre
 <GuideEntityEmbed Entity="Cautery" Caption="cauterization"/>
 
 ## Procedure conditions
-Performing procedures makes each step get progressively slower, the worst case scenario is if you were to do surgery on yourself while standing up and awake, and the best case scenario would be if you were doing surgery on someone else while they are laying down and sedated.
+Poor condition modifiers stacks and makes each step get progressively slower, the worst case scenario is if you were to do surgery on yourself while standing up and awake, and the best case scenario would be if you were doing surgery on someone else while they are laying down and sedated.
 
 You also need to undress people before performing surgery.
 
