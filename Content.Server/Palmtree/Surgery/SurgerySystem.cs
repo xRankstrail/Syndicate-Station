@@ -238,6 +238,18 @@ namespace Content.Server.Palmtree.Surgery.SurgerySystem
                 {
                     EntityManager.DeleteEntity(uid);
                 }
+                if (!_inventory.TryGetSlotEntity((EntityUid) args.User, "gloves", out var gloves) || !_inventory.TryGetSlotEntity((EntityUid) args.User, "mask", out var mask)) // INFECTION CODE GOES HERE!!!!
+                {
+                    // Stolen straight from Solidus' CPR PR.
+                    var infecting = new DamageSpecifier()
+                    {
+                        DamageDict = new()
+                        {
+                            { "Poison", 10}
+                        }
+                    };
+                    _damageableSystem.TryChangeDamage(args.Target, infecting, true, origin: uid);
+                }
             }
         }
         private void OnAfterInteract(EntityUid uid, PSurgeryToolComponent tool, AfterInteractEvent args) // Turn this into FTL strings later
