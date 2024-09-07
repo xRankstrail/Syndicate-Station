@@ -24,7 +24,7 @@ DISCORD_SPLIT_LIMIT = 2000
 
 TYPES_TO_EMOJI = {
     "Fix":    "🐛",
-    "Add":    "🆕",
+    "Add":    "✨",
     "Remove": "❌",
     "Tweak":  "⚒️"
 }
@@ -107,14 +107,14 @@ def diff_changelog(old: dict[str, Any], cur: dict[str, Any]) -> Iterable[Changel
 
 def get_discord_body(content: str):
     return {
-            "content": content,
-            # Do not allow any mentions.
-            "allowed_mentions": {
-                "parse": []
-            },
-            # SUPPRESS_EMBEDS
-            "flags": 1 << 2
-        }
+        "content": content,
+        # Do not allow any mentions.
+        "allowed_mentions": {
+            "parse": []
+        },
+        # SUPPRESS_EMBEDS
+        "flags": 1 << 2
+    }
 
 
 def send_discord(content: str):
@@ -137,7 +137,7 @@ def send_to_discord(entries: Iterable[ChangelogEntry]) -> None:
     for name, group in itertools.groupby(entries, lambda x: x["author"]):
         # Need to split text to avoid discord character limit
         group_content = io.StringIO()
-        group_content.write(f"**{name}** updated:\n")
+        group_content.write(f"## {name}:\n")
 
         for entry in group:
             for change in entry["changes"]:
@@ -145,7 +145,7 @@ def send_to_discord(entries: Iterable[ChangelogEntry]) -> None:
                 message = change['message']
                 url = entry.get("url")
                 if url and url.strip():
-                    group_content.write(f"{emoji} [-]({url}) {message}\n")
+                    group_content.write(f"{emoji} - [{message}]({url})\n")
                 else:
                     group_content.write(f"{emoji} - {message}\n")
 
@@ -156,7 +156,7 @@ def send_to_discord(entries: Iterable[ChangelogEntry]) -> None:
 
         # If adding the text would bring it over the group limit then send the message and start a new one
         if message_length + group_length >= DISCORD_SPLIT_LIMIT:
-            print("Split changelog  and sending to discord")
+            print("Split changelog and sending to discord")
             send_discord(message_text)
 
             # Reset the message

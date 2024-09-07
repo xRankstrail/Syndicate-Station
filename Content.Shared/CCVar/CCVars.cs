@@ -1570,13 +1570,13 @@ namespace Content.Shared.CCVar
         /// Whether the arrivals terminal should be on a planet map.
         /// </summary>
         public static readonly CVarDef<bool> ArrivalsPlanet =
-            CVarDef.Create("shuttle.arrivals_planet", true, CVar.SERVERONLY);
+            CVarDef.Create("shuttle.arrivals_planet", false, CVar.SERVERONLY);
 
         /// <summary>
         /// Whether the arrivals shuttle is enabled.
         /// </summary>
         public static readonly CVarDef<bool> ArrivalsShuttles =
-            CVarDef.Create("shuttle.arrivals", false, CVar.SERVERONLY);
+            CVarDef.Create("shuttle.arrivals", true, CVar.SERVERONLY);
 
         /// <summary>
         /// The map to use for the arrivals station.
@@ -1594,7 +1594,7 @@ namespace Content.Shared.CCVar
         /// Are players allowed to return on the arrivals shuttle.
         /// </summary>
         public static readonly CVarDef<bool> ArrivalsReturns =
-            CVarDef.Create("shuttle.arrivals_returns", false, CVar.SERVERONLY);
+            CVarDef.Create("shuttle.arrivals_returns", true, CVar.SERVERONLY);
 
         /// <summary>
         /// Whether to automatically spawn escape shuttles.

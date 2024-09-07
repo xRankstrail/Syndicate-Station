@@ -1,6 +1,6 @@
 - type: loadout
   id: LoadoutCommandGlovesInspection
-  category: Jobs
+  category: JobsCommandAUncategorized
   cost: 1
   exclusive: true
   requirements:
@@ -13,7 +13,7 @@
 
 - type: loadout
   id: LoadoutCodetalkInjector
-  category: Jobs
+  category: JobsCommandAUncategorized
   cost: 0
   exclusive: true
   requirements:
