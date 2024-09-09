@@ -141,3 +141,12 @@
     path: /Audio/Voice/Talk/syndieborg_ask.ogg
   exclaimSound:
     path: /Audio/Voice/Talk/syndieborg_exclaim.ogg
+
+- type: speechSounds
+  id: Combine
+  saySound:
+    path: /Audio/Voice/Misc/radiosay.ogg
+  askSound:
+    path: /Audio/Voice/Misc/radioyell.ogg
+  exclaimSound:
+    path: /Audio/Voice/Misc/radiowhat.ogg

@@ -36,6 +36,8 @@
         Slash: 0.95
         Piercing: 0.95
         Heat: 0.95
+  - type: SpeechSoundsReplacer
+    speechSounds: Combine
 
 - type: entity
   parent: ClothingMaskGas
@@ -56,6 +58,8 @@
         Slash: 0.95
         Piercing: 0.95
         Heat: 0.95
+  - type: SpeechSoundsReplacer
+    speechSounds: Combine
 
 - type: entity
   parent: ClothingMaskGas
@@ -343,6 +347,8 @@
     - WhitelistChameleon
     - HidesHair
     - HidesNose
+  - type: SpeechSoundsReplacer
+    speechSounds: Combine
 
 - type: entity
   parent: ClothingMaskGasExplorer

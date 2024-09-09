@@ -1,0 +1,23 @@
+- type: jukebox
+  id: Intermission
+  name: Eagle/Udio - Intermission
+  path:
+    path: /Audio/Lobby/Intermission.ogg
+
+- type: jukebox
+  id: Pulse
+  name: Eagle/Udio - Pulse
+  path:
+    path: /Audio/Lobby/Pulse.ogg
+
+- type: jukebox
+  id: Resonance
+  name: Eagle/Udio - Resonance
+  path:
+    path: /Audio/Lobby/Resonance.ogg
+
+- type: jukebox
+  id: Cyclic
+  name: Eagle/Udio - Cyclic
+  path:
+    path: /Audio/Lobby/Cyclic.ogg
