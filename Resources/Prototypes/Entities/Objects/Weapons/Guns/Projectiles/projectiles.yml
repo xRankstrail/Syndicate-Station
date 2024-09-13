@@ -1133,3 +1133,73 @@
     energy: 7.0
   - type: IgniteOnCollide
     fireStacks: 3.5
+
+#Syndicate Station
+- type: entity
+  id: BulletPMLBreach
+  name: Breaching Rocket
+  parent: BaseBulletTrigger
+  noSpawn: true
+  components:
+  - type: Sprite
+    sprite: Objects/Weapons/Guns/Projectiles/projectiles2.rsi
+    layers:
+      - state: frag
+  - type: ExplodeOnTrigger
+  - type: Explosive
+    explosionType: DemolitionCharge
+    totalIntensity: 10
+    intensitySlope: 10
+    maxIntensity: 10
+    canCreateVacuum: false
+  - type: PointLight
+    radius: 3.5
+    color: orange
+    energy: 0.5
+
+#Syndicate Station
+- type: entity
+  id: BulletPMLFlash
+  name: Flash Rocket
+  parent: BaseBulletTrigger
+  noSpawn: true
+  components:
+  - type: Sprite
+    sprite: Objects/Weapons/Guns/Projectiles/projectiles2.rsi
+    layers:
+      - state: frag
+  - type: FlashOnTrigger
+    range: 15
+  - type: SpawnOnTrigger
+    proto: GrenadeFlashEffect
+  - type: ActiveTimerTrigger
+    timeRemaining: 0.3
+  - type: DeleteOnTrigger
+  - type: PointLight
+    radius: 3.5
+    color: orange
+    energy: 0.5
+
+- type: entity
+  id: BulletPMLKnockout
+  name: Knockout Rocket
+  parent: BaseBulletTrigger
+  noSpawn: true
+  components:
+  - type: Sprite
+    sprite: Objects/Weapons/Guns/Projectiles/projectiles2.rsi
+    layers:
+      - state: frag
+  - type: Projectile
+    damage:
+      types:
+        Heat: 5
+    soundHit:
+      path: "/Audio/Weapons/boxingbell.ogg"
+  - type: StunOnCollide
+    stunAmount: 10
+    knockdownAmount: 7
+  - type: PointLight
+    radius: 3.5
+    color: orange
+    energy: 0.5

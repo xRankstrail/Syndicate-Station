@@ -197,3 +197,65 @@
   - type: Sprite
     sprite: Objects/Weapons/Guns/Ammunition/Explosives/explosives.rsi
     state: glassshot
+
+#Syndicate Station
+- type: entity
+  id: CartridgePMLBreach
+  name: PML-10 Breaching Rocket
+  parent: BaseItem
+  description: A less-than-lethal warhead designed for the PML-10 Rocket Launcher. This one has a breaching charge inside.
+  components:
+  - type: Tag
+    tags:
+      - CartridgeRocket
+  - type: Item
+    size: Small
+  - type: CartridgeAmmo
+    proto: BulletPMLBreach
+    deleteOnSpawn: true
+  - type: Sprite
+    sprite: Objects/Weapons/Guns/Ammunition/Explosives/explosives.rsi
+    state: rpg
+  - type: StaticPrice
+    price: 20
+
+#Syndicate Station
+- type: entity
+  id: CartridgePMLFlash
+  name: PML-10 Flash Rocket
+  parent: BaseItem
+  description: A less-than-lethal warhead designed for the PML-10 Rocket Launcher. This one has a cluster-bang inside.
+  components:
+  - type: Tag
+    tags:
+      - CartridgeRocket
+  - type: Item
+    size: Small
+  - type: CartridgeAmmo
+    proto: BulletPMLFlash
+    deleteOnSpawn: true
+  - type: Sprite
+    sprite: Objects/Weapons/Guns/Ammunition/Explosives/explosives.rsi
+    state: rpg
+  - type: StaticPrice
+    price: 20
+
+- type: entity
+  id: CartridgePMLKnockout
+  name: PML-10 Knockout Rocket
+  parent: BaseItem
+  description: A less-than-lethal warhead designed for the PML-10 Rocket Launcher. This one has a... boxing glove on top?
+  components:
+  - type: Tag
+    tags:
+      - CartridgeRocket
+  - type: Item
+    size: Small
+  - type: CartridgeAmmo
+    proto: BulletPMLKnockout
+    deleteOnSpawn: true
+  - type: Sprite
+    sprite: Objects/Weapons/Guns/Ammunition/Explosives/explosives.rsi
+    state: rpg
+  - type: StaticPrice
+    price: 20

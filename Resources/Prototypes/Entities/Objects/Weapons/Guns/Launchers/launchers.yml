@@ -375,3 +375,38 @@
       tags:
         - CartridgeRocket
     proto: ImmovableRodSlow
+
+#Syndicate Station
+
+- type: entity
+  name: PML-10
+  parent: BaseWeaponLauncher
+  id: WeaponLauncherRocketSyndie
+  description: A rocket launcher produced by the Gorlex Marauders, based off the PML-9 Anti-Armor launcher. This one has been retro-fitted for less than lethal rounds.
+  components:
+  - type: Sprite
+    sprite: Objects/Weapons/Guns/Launchers/rocket.rsi
+    layers:
+      - state: base
+        map: ["enum.GunVisualLayers.Base"]
+      - state: mag-0
+        map: ["enum.GunVisualLayers.Mag"]
+  - type: Clothing
+    sprite: Objects/Weapons/Guns/Launchers/rocket.rsi
+  - type: Gun
+    fireRate: 0.5
+    soundGunshot:
+      path: /Audio/Weapons/Guns/Gunshots/rpgfire.ogg
+  - type: BallisticAmmoProvider
+    whitelist:
+      tags:
+        - CartridgeRocket
+    proto: CartridgeRocket
+    capacity: 1
+    soundInsert:
+      path: /Audio/Weapons/Guns/MagIn/batrifle_magin.ogg
+  - type: MagazineVisuals
+    magState: mag
+    steps: 2
+    zeroVisible: false
+  - type: Appearance
