@@ -20,8 +20,7 @@
   special:
   - !type:AddComponentSpecial
     components:
-      - type: CQCKnowledge
-      - type: ProfessionalChef #Nyano - End Summary.
+    - type: ProfessionalChef #Nyano - End Summary.
 
 - type: startingGear
   id: ChefGear
