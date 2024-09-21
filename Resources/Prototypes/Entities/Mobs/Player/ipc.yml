@@ -102,15 +102,19 @@
   - type: CanHostGuardian
   - type: LanguageKnowledge
     speaks:
-    - GalacticCommon
+    - TauCetiBasic
     - RobotTalk
     understands:
-    - GalacticCommon
+    - TauCetiBasic
     - RobotTalk
   - type: WeldingHealable
   - type: OfferItem
   - type: LayingDown
   - type: Carriable
+  - type: StepTriggerImmune
+    whitelist:
+      types:
+      - Shard
 
 - type: entity
   save: false
