@@ -111,3 +111,9 @@
   id: Flap
   kind: source
   path: "/Textures/Shaders/flap.swsl"
+
+# mesons
+- type: shader
+  id: Scanline
+  kind: source
+  path: "/Textures/Shaders/scanline.swsl"

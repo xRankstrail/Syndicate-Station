@@ -55,14 +55,26 @@
 - type: entity
   parent: ClothingEyesBase
   id: ClothingEyesGlassesMeson
-  name: engineering goggles #less confusion
-  description: Green-tinted goggles using a proprietary polymer that provides protection from eye damage of all types.
+  name: Meson Scanners #less confusion
+  description: Green-tinted goggles with inbuilt scanners that allows the user to see through walls.
   components:
   - type: Sprite
     sprite: Clothing/Eyes/Glasses/meson.rsi
+    layers:
+    - state: icon
+    - state: icon_enabled
+      map: [ "enum.ToggleVisuals.Layer" ]
+      visible: false
+  - type: GenericVisualizer
+    visuals:
+      enum.ToggleVisuals.Toggled:
+        enum.ToggleVisuals.Layer:
+          True: {visible: true}
+          False: {visible: false}
   - type: Clothing
     sprite: Clothing/Eyes/Glasses/meson.rsi
-  - type: EyeProtection
+  - type: Mesons
+    mesonType: Walls
   - type: Tag
     tags:
     - SecDogWearable # DeltaV - let Laika wear meson goggles
