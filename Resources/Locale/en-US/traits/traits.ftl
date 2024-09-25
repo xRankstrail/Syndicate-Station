@@ -314,3 +314,8 @@ trait-description-Spinarette =
 trait-name-AddictionNicotine = Nicotine Addiction
 trait-description-AddictionNicotine =
     You have an addiction to Nicotine, and will require frequent smoke breaks to keep your mood in check.
+
+trait-name-MachineComprehension = Machine Comprehension
+trait-description-MachineComprehension =
+    Either through years of interaction with stationbound synthetics, or the use of a brain implant, 
+    you are able to understand the various noises produced by Encoded Audio Language

@@ -65,3 +65,16 @@
     - Elyran
   languagesUnderstood:
     - Elyran
+
+- type: trait
+  id: MachineComprehension
+  category: TraitsSpeechLanguages
+  points: 2
+  requirements:
+    - !type:CharacterJobRequirement
+      inverted: false
+      jobs:
+        - StationEngineer
+        - ChiefEngineer
+  languagesUnderstood:
+    - RobotTalk
