@@ -69,11 +69,11 @@ public partial class SharedBodySystem
         switch (damageType)
         {
             case "Blunt":
-                return 1.3f;
+                return 1.5f;
             case "Slash":
-                return 1.3f;
+                return 2.5f;
             case "Pierce":
-                return 1.3f;
+                return 0.8f;
             case "Heat":
                 return 1.0f;
             case "Cold":
@@ -103,9 +103,9 @@ public partial class SharedBodySystem
             case BodyPartType.Torso:
                 return 1.0f;
             case BodyPartType.Arm:
-                return 1.0f;
+                return 1.5f;
             case BodyPartType.Leg:
-                return 1.0f;
+                return 1.5f;
             default:
                 return 0.5f;
         }
