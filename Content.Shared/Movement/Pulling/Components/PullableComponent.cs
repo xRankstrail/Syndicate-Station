@@ -45,7 +45,7 @@ public sealed partial class PullableComponent : Component
     [DataField, AutoNetworkedField]
     public bool BeingActivelyPushed = false;
 
-
+    // WD EDIT START
     [DataField]
     public Dictionary<GrabStage, short> PulledAlertAlertSeverity = new()
     {
@@ -63,4 +63,5 @@ public sealed partial class PullableComponent : Component
 
     [AutoNetworkedField]
     public TimeSpan NextEscapeAttempt = TimeSpan.Zero;
+    // WD EDIT END
 }

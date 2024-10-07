@@ -65,6 +65,7 @@ public sealed partial class PullerComponent : Component
     [DataField]
     public float MaxPushRange = 2f;
 
+    // WD EDIT START
     [DataField]
     public Dictionary<GrabStage, short> PullingAlertSeverity = new()
     {
@@ -109,4 +110,5 @@ public sealed partial class PullerComponent : Component
     {
         { GrabStage.Suffocate, 1 },
     };
+    // WD EDIT END
 }
