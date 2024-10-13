@@ -1,52 +1,83 @@
-using Content.Client.UserInterface.Systems.Gameplay;
+using Content.Client.Gameplay;
 using Content.Client.UserInterface.Systems.Targeting.Widgets;
 using Content.Shared.Targeting;
+using Content.Client.Targeting;
 using Content.Shared.Targeting.Events;
-using Robust.Client.GameObjects;
 using Robust.Client.UserInterface.Controllers;
-using Robust.Shared.Utility;
 using Robust.Client.Player;
 
 namespace Content.Client.UserInterface.Systems.Targeting;
 
-public sealed class TargetingUIController : UIController
+public sealed class TargetingUIController : UIController, IOnStateEntered<GameplayState>, IOnSystemChanged<TargetingSystem>
 {
     [Dependency] private readonly IEntityManager _entManager = default!;
     [Dependency] private readonly IEntityNetworkManager _net = default!;
     [Dependency] private readonly IPlayerManager _playerManager = default!;
 
-    private SpriteSystem _spriteSystem = default!;
-    private TargetBodyPart _currentTarget = TargetBodyPart.Torso; // Default to torso
+    private TargetingComponent? _targetingComponent;
+    private TargetingControl? TargetingControl => UIManager.GetActiveUIWidgetOrNull<TargetingControl>();
 
-    public override void Initialize()
+    public void OnSystemLoaded(TargetingSystem system)
     {
-        base.Initialize();
-        var gameplayStateLoad = UIManager.GetUIController<GameplayStateLoadController>();
-        gameplayStateLoad.OnScreenLoad += OnScreenLoad;
+        system.TargetingStartup += AddTargetingControl;
+        system.TargetingShutdown += RemoveTargetingControl;
+        system.TargetChange += CycleTarget;
     }
 
-    private void OnScreenLoad()
+    public void OnSystemUnloaded(TargetingSystem system)
     {
-        _spriteSystem = _entManager.System<SpriteSystem>();
+        system.TargetingStartup -= AddTargetingControl;
+        system.TargetingShutdown -= RemoveTargetingControl;
+        system.TargetChange -= CycleTarget;
     }
 
-    public void CycleTarget(TargetingControl control)
+    public void OnStateEntered(GameplayState state)
     {
-        if (_playerManager.LocalEntity is not { } user)
+        if (TargetingControl != null)
+        {
+            TargetingControl.SetVisible(_targetingComponent != null);
+
+            if (_targetingComponent != null)
+                TargetingControl.SetColors(_targetingComponent.Target);
+        }
+    }
+
+    public void AddTargetingControl(TargetingComponent component)
+    {
+        _targetingComponent = component;
+
+        if (TargetingControl != null)
+        {
+            TargetingControl.SetVisible(_targetingComponent != null);
+
+            if (_targetingComponent != null)
+                TargetingControl.SetColors(_targetingComponent.Target);
+        }
+
+    }
+
+    public void RemoveTargetingControl()
+    {
+        if (TargetingControl != null)
+            TargetingControl.SetVisible(false);
+
+        _targetingComponent = null;
+    }
+
+    public void CycleTarget(TargetBodyPart bodyPart)
+    {
+        if (_playerManager.LocalEntity is not { } user
+        || _entManager.GetComponent<TargetingComponent>(user) is not { } targetingComponent
+        || TargetingControl == null)
             return;
 
         var player = _entManager.GetNetEntity(user);
-        _currentTarget = (TargetBodyPart) (((int) _currentTarget + 1) % Enum.GetValues(typeof(TargetBodyPart)).Length);
-        var msg = new TargetChangeEvent(player, _currentTarget);
-        _net.SendSystemNetworkMessage(msg);
-        UpdateVisuals(control);
-    }
-
-    public void UpdateVisuals(TargetingControl control)
-    {
-        var stateName = $"doll-{_currentTarget.ToString().ToLowerInvariant()}";
-        var spriteSpecifier = new SpriteSpecifier.Rsi(new ResPath("/Textures/Interface/Targeting/bodydoll.rsi"), stateName);
-        control.SetTargetImage(_spriteSystem.Frame0(spriteSpecifier));
+        if (bodyPart != targetingComponent.Target)
+        {
+            var msg = new TargetChangeEvent(player, bodyPart);
+            _net.SendSystemNetworkMessage(msg);
+            TargetingControl?.SetColors(bodyPart);
+        }
     }
 
 
