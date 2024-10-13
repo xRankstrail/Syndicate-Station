@@ -87,7 +87,7 @@ namespace Content.Server.Palmtree.Surgery.SurgerySystem
                 {
                     _popupSystem.PopupEntity("You successfully perform an incision!", args.User, PopupType.Small);
                     patient.procedures.Add("scalpel");
-                    _damageableSystem.TryChangeDamage(args.Target, tool.damageOnUse, true, origin: uid);
+                    _damageableSystem.TryChangeDamage(args.Target, tool.damageOnUse, true, origin: uid, partMultiplier: 0f);
                     _blood.TryModifyBleedAmount((EntityUid) args.Target, tool.bleedAmountOnUse);
                     _audio.PlayPvs(tool.audioEnd, args.User);
                 }
@@ -239,7 +239,8 @@ namespace Content.Server.Palmtree.Surgery.SurgerySystem
                 }
                 if (damageOnFinish)
                 {
-                    _damageableSystem.TryChangeDamage(args.Target, tool.damageOnUse, true, origin: uid);
+                    _damageableSystem.TryChangeDamage(args.Target, tool.damageOnUse, true, origin: uid,
+                        partMultiplier: IsNegativeDamage(tool.damageOnUse) ? 1f : 0f);
                     _blood.TryModifyBleedAmount((EntityUid) args.Target, tool.bleedAmountOnUse);
                 }
                 _audio.PlayPvs(tool.audioEnd, args.User);
@@ -257,7 +258,7 @@ namespace Content.Server.Palmtree.Surgery.SurgerySystem
                             { "Poison", 10}
                         }
                     };
-                    _damageableSystem.TryChangeDamage(args.Target, infecting, true, origin: uid);
+                    _damageableSystem.TryChangeDamage(args.Target, infecting, true, origin: uid, partMultiplier: 0f);
                 }
             }
         }
@@ -314,6 +315,11 @@ namespace Content.Server.Palmtree.Surgery.SurgerySystem
             };
             _audio.PlayPvs(tool.audioStart, args.User);
             _doAfter.TryStartDoAfter(doAfterEventArgs);
+        }
+
+        private bool IsNegativeDamage(DamageSpecifier damage)
+        {
+            return damage.GetTotal() < 0;
         }
     }
 }
