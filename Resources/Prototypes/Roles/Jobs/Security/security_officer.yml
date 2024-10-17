@@ -36,8 +36,6 @@
     ears: ClothingHeadsetSecurity
     face: ClothingMaskNeckGaiter
     belt: ClothingBeltSecurityFilled
-    pocket1: WeaponPistolViper
-    pocket2: ClothingHeadHatBeretSecurity
-  innerClothingSkirt: ClothingUniformJumpsuitSecGrey
-  satchel: ClothingBackpackSatchelSecurityFilled
-  duffelbag: ClothingBackpackDuffelSecurityFilled
+  innerClothingSkirt: ClothingUniformJumpskirtSec
+  satchel: ClothingBackpackSatchelSecurity
+  duffelbag: ClothingBackpackDuffelSecurity
